@@ -1,0 +1,3 @@
+parameters:
+  jwt_lifetime_hours: '%job_searcher.jwt.lifetime.hours%'
+  jwt_user_name: "%job_searcher.jwt.user_name%"

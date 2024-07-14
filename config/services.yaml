@@ -1,0 +1,28 @@
+imports:
+    - { resource: 'parameters/jwt.yaml' }
+    # Thought fail,
+    # Calling service MUST be used to sing the key
+    # Target service must have mapping between calling service and jwt key
+    # Then the key from mapping must be used to dynamically replace the lexit public key to validate the jwt
+
+services:
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    JobSearcherBridge\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    JobSearcherBridge\Service\BridgeService:
+        arguments:
+            $logFilePath: "%job_searcher.log.file_path%"
+            $loggerName: "%job_searcher.log.name%"
+
+    Lexik\Bundle\JWTAuthenticationBundle\Services\KeyLoader\AbstractKeyLoader:
+        arguments:
+            $publicKey: 'test'
