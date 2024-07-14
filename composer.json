@@ -1,6 +1,6 @@
 {
     "type": "library",
-    "name": "volmarg/job-searcher-bridge",
+    "name": "volmarg/job-offers-handler-bridge",
     "description": "Bridge between job-searcher and any other project",
     "license": "proprietary",
     "minimum-stability": "dev",
